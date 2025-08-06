@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>三国杀技能查询</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    input, button { padding: 8px; font-size: 16px; }
+    #result { margin-top: 20px; font-size: 18px; }
+  </style>
+</head>
+<body>
+  <h1>三国杀技能查询器</h1>
+  <p>输入武将名，查看技能：</p>
+  <input type="text" id="inputName" placeholder="例如：诸葛亮" />
+  <button onclick="searchSkill()">查询</button>
+  <div id="result"></div>
+
+  <script>
+    const data = {
+      "诸葛亮": "【观星】：准备阶段可观看牌堆顶五张牌，并可调整顺序。",
+      "赵云": "【龙胆】：你可以将一张【杀】当【闪】或【闪】当【杀】使用或打出。",
+      "吕布": "【无双】：你的【杀】需被两张【闪】抵消，你的【决斗】对方需打出两张【杀】。",
+      // 可继续添加更多武将和技能
+    };
+
+    function searchSkill() {
+      const name = document.getElementById("inputName").value.trim();
+      const resultDiv = document.getElementById("result");
+
+      if (data[name]) {
+        resultDiv.innerHTML = `<strong>${name}</strong>：${data[name]}`;
+      } else {
+        resultDiv.innerHTML = `未找到与 <strong>${name}</strong> 相关的技能。`;
+      }
+    }
+  </script>
+</body>
+</html>
